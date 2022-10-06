@@ -4,7 +4,11 @@ from django.db import models
 
 class Post(models.Model):
     title = models.CharField(max_length=30) #제목 글자수 제한 30
-    content = models.TestField()  #콘텐트는 블로그 글
+    content = models.TextField()  #콘텐트는 블로그 글
 
-    created_at = models.DateTimeField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now=True)
     #author: 추후 작성 예정
+
+    def __str__(self):
+        return f"[{self.pk}] {self.title}"
