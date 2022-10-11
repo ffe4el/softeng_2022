@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>개인홈페이지</title>
+
+</head>
+
+<body style="background-color:#ffe4e1;">
+
+<nav>
+    <a href="#home">home</a>
+    <a href="#blog">blog</a>
+    <a href="#about">about</a>
+</nav>
+
+<h1 id="title" class="header" align="center">SOLA's Homepage</h1>
+<h2 class="header" align="center">Welcome to my Homepage</h2>
+<p align="center">안녕하세요. 김솔아입니다. 나이는 22살이구요. 뱀띠 입니다. 찡</p>
+<br>
+
+<hr color="yellow">
+
+<h3 align="center"><b>아뵤우~~~</b></h3><br>
+<hr color="yellow">
+
+<input id ="input_a" onkeyup="javascript:doSomething()"> + <input id ="input_b" onkeyup="javascript:doSomething()">
+
+<p id = "result"></p>
+<script>
+    function doSomething() {
+        let a = document.getElementById('input_a').value
+        let b = document.getElementById('input_b').value
+        document.getElementById('result').innerHTML = Number(a)+Number(b);
+    }
+
+</script>
+
+<hr color="yellow">
+
+<button onclick="javascript:WhatTimeIsIt()">현재시간</button>
+
+{% for p in posts %}
+    <hr/>
+    <h2><a href="{{p.get_absolute_url}}">{{p.title}}</a></h2>
+    <h4>{{p.created_at }}</h4>
+    <p>{{p.content}}</p>
+{% endfor %}
+
+
+
+
+</body>
+
+
+
+
+
+</html>
