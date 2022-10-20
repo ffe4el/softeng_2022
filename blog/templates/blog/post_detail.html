@@ -3,14 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>{{post.title}} -Blog</title>
+    <script src="https://kit.fontawesome.com/1fb217f3df.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <nav>
     <a href="/blog/">블로그 목록보기</a>
 </nav>
+{% if post.head_image %}
+<!--<div class="card mb-4">-->
+    <img class="card-img-top" src="{{ post.head_image.url }}" alt="Card image cap">
+{% else %}
+    <img class="card-img-top" src="https://picsum.photos/seed/{{ post.get_seed }}/800/600" alt="random_image">
+{% endif %}
     <h2>{{post.title}}</h2>
     <h4>{{post.created_at }}</h4>
     <p>{{post.content}}</p>
 <hr/>
+{% if post.file_upload %}
+<a href="{{ post.file_upload.url }}" class="btn btn-outline-dark" role="button" download>Download:
+    {% if post.get_file_ext == 'csv' %}
+        <i class="fas fa-file-csv"></i>
+    {% elif post.get_file_ext == 'xlsx' %}
+        <i class="fas fa-file-excel"></i>
+    {% elif post.get_file_ext == 'docs' %}
+        <i class="fas fa-file-word"></i>
+    {% elif post.get_file_ext == 'pdf' %}
+        <i class="fas fa-file-pdf"></i>
+    {% else %}
+        <i class="fas fa-file"></i>
+    {% endif %}
+    {{ post.get_file_name }}
+    </a>
+    {% endif %}
+
+
 </body>
 </html>
