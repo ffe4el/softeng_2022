@@ -6,6 +6,7 @@ class Post(models.Model):
     title = models.CharField(max_length=30) #제목 글자수 제한 30
     content = models.TextField()  #콘텐트는 블로그 글
 
+    head_image = models.ImageField(upload_to='blog/images/%Y/%m/%d/', blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
     #author: 추후 작성 예정
