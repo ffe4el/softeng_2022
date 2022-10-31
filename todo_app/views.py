@@ -5,9 +5,9 @@ from django.views.generic import (
     UpdateView,
     DeleteView,
 )
-from .models import ToDoList
-from .models import ToDoList, ToDoItem
 from django.urls import reverse, reverse_lazy
+from .models import ToDoList, ToDoItem
+
 
 class ListListView(ListView):
     model = ToDoList
@@ -34,7 +34,6 @@ class ListCreate(CreateView):
         context["title"] = "Add a new list"
         return context
 
-#클래스를 정의
 class ItemCreate(CreateView):
     model = ToDoItem
     fields = [
@@ -60,7 +59,6 @@ class ItemCreate(CreateView):
     def get_success_url(self):
         return reverse("list", args=[self.object.todo_list_id])
 
-#ItemUpdate 은 와 매우 유사 ItemCreate하지만 더 적절한 제목을 제공하는 를 정의
 class ItemUpdate(UpdateView):
     model = ToDoItem
     fields = [
@@ -78,7 +76,6 @@ class ItemUpdate(UpdateView):
 
     def get_success_url(self):
         return reverse("list", args=[self.object.todo_list_id])
-
 
 class ListDelete(DeleteView):
     model = ToDoList

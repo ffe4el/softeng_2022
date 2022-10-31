@@ -1,13 +1,12 @@
+# Create your models here.
 from django.utils import timezone
 
 from django.db import models
 from django.urls import reverse
 
-#기본 기한 one_week_hence()을 설정하는 데 유용한 독립 실행형 유틸리티 기능을 정의합니다 .ToDoItem
 def one_week_hence():
     return timezone.now() + timezone.timedelta(days=7)
 
-#Django의 django.db.models.Model슈퍼클래스를 확장하는 두 개의 클래스를 정의
 class ToDoList(models.Model):
     title = models.CharField(max_length=100, unique=True)
 
